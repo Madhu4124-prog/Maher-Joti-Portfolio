@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maher Joti | Entrepreneur & Thought Leader</title>
+  <meta name="description" content="Maher Joti - Exploring mindset, philosophy, and peak performance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --gold-dark: #8a6d2f;
+      --black: #080808;
+      --deep: #0d0d0d;
+      --surface: #141414;
+      --surface2: #1c1c1c;
+      --border: rgba(201,168,76,0.15);
+      --text: #f0ece4;
+      --muted: #8a8680;
+      --serif: 'Cormorant Garamond', serif;
+      --sans: 'DM Sans', sans-serif;
+      --display: 'Playfair Display', serif;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--sans);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+    /* ── NAV ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 24px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.5s ease;
+    }
+    header.scrolled {
+      background: rgba(8,8,8,0.95);
+      backdrop-filter: blur(20px);
+      padding: 16px 60px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .logo span { color: var(--text); font-weight: 300; }
+    nav { display: flex; gap: 40px; }
+    nav a {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    nav a:hover, nav a.active { color: var(--gold); }
+    nav a:hover::after, nav a.active::after { transform: scaleX(1); }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--gold);
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 60px 80px;
+      gap: 60px;
+      position: relative;
+    }
+    .hero-bg-line {
+      position: absolute;
+      top: 0; right: 50%;
+      width: 1px; height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--border), transparent);
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--gold);
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-family: var(--display);
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-img-frame {
+      position: relative;
+      width: 420px;
+      height: 520px;
+    }
+    .hero-img-frame::before {
+      content: '';
+      position: absolute;
+      top: -20px; right: -20px;
+      width: 100%; height: 100%;
+      border: 1px solid var(--gold-dark);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-img-frame::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, var(--black), transparent);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-img-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      position: relative;
+      z-index: 1;
+      filter: grayscale(20%) contrast(1.05);
+    }
+    .hero-badge {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 12px 20px;
+      z-index: 10;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+    .hero-badge-1 { bottom: 60px; left: -40px; }
+    .hero-badge-2 { top: 40px; right: -40px; }
+    .hero-badge .badge-num {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-badge .badge-label { color: var(--muted); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; }
+
+    /* ── MARQUEE ── */
+    .marquee-section {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 60px;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-item {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    .marquee-item::after { content: '✦'; color: var(--gold); font-size: 0.5rem; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 120px 60px; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .section-heading em { font-style: italic; color: var(--gold); font-family: var(--display); }
+    .section-sub { color: var(--muted); font-size: 1rem; max-width: 500px; line-height: 1.8; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--deep); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 60px;
+    }
+    .about-img {
+      position: relative;
+      height: 560px;
+    }
+    .about-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(30%);
+    }
+    .about-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--deep) 0%, transparent 50%);
+    }
+    .about-img-line {
+      position: absolute;
+      top: 20px; left: 20px; right: -20px; bottom: -20px;
+      border: 1px solid var(--border);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      margin-top: 48px;
+      border: 1px solid var(--border);
+    }
+    .stat {
+      padding: 32px;
+      border-right: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-number {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── TOPICS ── */
+    #topics { background: var(--black); }
+    .topics-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 60px; flex-wrap: wrap; gap: 20px; }
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .topic-card {
+      background: var(--black);
+      padding: 48px 40px;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .topic-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold-dark), var(--gold));
+      transform: scaleX(0);
+      transition: transform 0.4s;
+      transform-origin: left;
+    }
+    .topic-card:hover { background: var(--surface); }
+    .topic-card:hover::before { transform: scaleX(1); }
+    .topic-num {
+      font-family: var(--serif);
+      font-size: 0.75rem;
+      color: var(--gold-dark);
+      letter-spacing: 0.2em;
+      margin-bottom: 24px;
+      display: block;
+    }
+    .topic-icon-wrap {
+      width: 48px; height: 48px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      color: var(--gold);
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+    .topic-card:hover .topic-icon-wrap {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+    .topic-title {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .topic-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── IMPACT ── */
+    #impact { background: var(--deep); }
+    .impact-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 80px; }
+    .impact-number {
+      font-family: var(--serif);
+      font-size: clamp(5rem, 10vw, 9rem);
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 0.9;
+      opacity: 0.7;
+    }
+    .partners-row { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; margin-top: 40px; }
+    .partner-icon { font-size: 1.8rem; color: var(--surface2); transition: color 0.3s; }
+    .partner-icon:hover { color: var(--gold-dark); }
+    .testimonials { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .testimonial {
+      background: var(--deep);
+      padding: 48px;
+      position: relative;
+    }
+    .testimonial::before {
+      content: '\201C';
+      font-family: var(--serif);
+      font-size: 6rem;
+      color: var(--gold);
+      opacity: 0.15;
+      position: absolute;
+      top: 20px; left: 40px;
+      line-height: 1;
+    }
+    .test-quote {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .test-author { display: flex; align-items: center; gap: 16px; }
+    .test-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      filter: grayscale(40%);
+    }
+    .test-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+    .test-role { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+    .stars-row { color: var(--gold); font-size: 0.65rem; margin-top: 6px; letter-spacing: 2px; }
+
+    /* ── INSIGHTS ── */
+    #feed { background: var(--black); }
+    .feed-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 60px; }
+    .post-card { background: var(--black); transition: background 0.3s; overflow: hidden; }
+    .post-card:hover { background: var(--surface); }
+    .post-img {
+      width: 100%; height: 220px;
+      object-fit: cover;
+      filter: grayscale(30%);
+      transition: filter 0.4s, transform 0.4s;
+      display: block;
+    }
+    .post-card:hover .post-img { filter: grayscale(0%); transform: scale(1.03); }
+    .post-body { padding: 32px; }
+    .post-tags { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .tag {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dark);
+      padding: 4px 10px;
+    }
+    .post-quote {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+    .post-note { font-size: 0.85rem; color: var(--muted); margin-bottom: 24px; }
+    .post-actions { display: flex; gap: 20px; border-top: 1px solid var(--border); padding-top: 20px; }
+    .action-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+      font-family: var(--sans);
+    }
+    .action-btn:hover { color: var(--gold); }
+    .load-more-wrap { text-align: center; margin-top: 60px; }
+
+    /* ── SOCIALS ── */
+    #socials { background: var(--deep); }
+    .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 60px; }
+    .platform-card { background: var(--deep); padding: 60px 48px; }
+    .platform-header { margin-bottom: 40px; }
+    .platform-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
+    .platform-icon.ig { color: #e1306c; }
+    .platform-icon.fb { color: #1877f2; }
+    .platform-name {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .platform-handle { font-size: 0.8rem; color: var(--gold); letter-spacing: 0.1em; }
+    .platform-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold-dark);
+      margin: 20px 0;
+      filter: grayscale(20%);
+    }
+    .p-stats { display: flex; gap: 40px; margin: 32px 0; }
+    .p-stat-num {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--text);
+      display: block;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .p-stat-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .platform-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 36px; }
+    .btn-platform {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding: 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.3s;
+      font-family: var(--sans);
+    }
+    .btn-platform:hover { opacity: 0.85; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--black); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; margin-top: 60px; align-items: start; }
+    .contact-info-heading {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .contact-info-heading em { font-style: italic; color: var(--gold); }
+    .contact-info p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 40px; }
+    .services-list { display: flex; flex-direction: column; gap: 16px; }
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .service-item:hover { border-color: var(--gold-dark); }
+    .service-icon {
+      width: 40px; height: 40px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .service-name { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; }
+
+    /* Form */
+    .contact-form-wrap { background: var(--surface); border: 1px solid var(--border); padding: 48px; }
+    .form-group { margin-bottom: 24px; position: relative; }
+    .form-control {
+      width: 100%;
+      background: var(--black);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 16px 20px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-control:focus { border-color: var(--gold-dark); }
+    .form-control::placeholder { color: var(--muted); }
+    label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    select.form-control { cursor: pointer; }
+    select.form-control option { background: #222; color: var(--text); }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      width: 100%;
+      padding: 18px;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .btn-submit:hover { background: var(--gold-light); }
+    #form-message { display: none; padding: 14px 20px; margin-bottom: 20px; font-size: 0.85rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      padding: 48px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+    .footer-socials { display: flex; gap: 20px; }
+    .footer-socials a {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: all 0.3s;
+    }
+    .footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      header { padding: 20px 32px; }
+      header.scrolled { padding: 14px 32px; }
+      #home { padding: 100px 32px 60px; gap: 40px; }
+      section { padding: 80px 32px; }
+      .about-grid, .impact-top, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .topics-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-img-frame { width: 340px; height: 420px; }
+      footer { padding: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 16px 20px; }
+      header.scrolled { padding: 12px 20px; }
+      nav { display: none; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--black); align-items: center; justify-content: center; gap: 32px; z-index: 999; }
+      nav.open { display: flex; }
+      nav a { font-size: 1rem; }
+      .menu-toggle { display: flex; z-index: 1001; position: relative; }
+      #home { grid-template-columns: 1fr; padding: 100px 20px 60px; text-align: center; }
+      .hero-eyebrow { justify-content: center; }
+      .hero-desc { margin: 0 auto 40px; }
+      .hero-btns { justify-content: center; }
+      .hero-visual { justify-content: center; order: -1; }
+      .hero-img-frame { width: 280px; height: 350px; }
+      .hero-badge-1 { left: -10px; bottom: 40px; }
+      .hero-badge-2 { right: -10px; top: 20px; }
+      section { padding: 60px 20px; }
+      .topics-grid { grid-template-columns: 1fr; }
+      .feed-grid { grid-template-columns: 1fr; }
+      .social-grid { grid-template-columns: 1fr; }
+      .testimonials { grid-template-columns: 1fr; }
+      .section-heading { font-size: 2rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .topics-header { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; align-items: center; text-align: center; padding: 32px 20px; }
+      .contact-form-wrap { padding: 28px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-img-frame { width: 240px; height: 300px; }
+      .hero-badge { font-size: 0.65rem; padding: 10px 14px; }
+      .p-stats { gap: 24px; flex-wrap: wrap; }
+      .about-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header id="header">
+    <a href="index.html" class="logo">Maher<span>Joti</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    <nav id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="topics.html">Topics</a>
+      <a href="content.html">Insights</a>
+      <a href="social.html">Socials</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-bg-line"></div>
+    <div class="hero-content reveal">
+      <span class="hero-eyebrow">Mindset · Philosophy · Growth</span>
+      <h1 class="hero-title">Thought<br><em>Leader.</em><br>Visionary.</h1>
+      <p class="hero-desc">Exploring the intersection of human psychology, success mindset, and peak performance. Join me on a journey to master your reality and unlock your true potential.</p>
+      <div class="hero-btns">
+        <a href="topics.html" class="btn-gold">Explore Insights <i class="fas fa-arrow-right"></i></a>
+        <a href="social.html" class="btn-ghost"><i class="fab fa-instagram"></i> Follow Me</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hero-img-frame">
+        <img src="imgs/maher.jpg" alt="Maher Joti" />
+        <div class="hero-badge hero-badge-1">
+          <span class="badge-num">500+</span>
+          <span class="badge-label">Insights Shared</span>
+        </div>
+        <div class="hero-badge hero-badge-2">
+          <span class="badge-num">1.5M</span>
+          <span class="badge-label">Global Reach</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Mindset Mastery</span>
+      <span class="marquee-item">Success Psychology</span>
+      <span class="marquee-item">Peak Performance</span>
+      <span class="marquee-item">Life Philosophy</span>
+      <span class="marquee-item">Wealth Thinking</span>
+      <span class="marquee-item">Personal Growth</span>
+      <span class="marquee-item">Discipline & Focus</span>
+      <span class="marquee-item">Mindset Mastery</span>
+      <span class="marquee-item">Success Psychology</span>
+      <span class="marquee-item">Peak Performance</span>
+      <span class="marquee-item">Life Philosophy</span>
+      <span class="marquee-item">Wealth Thinking</span>
+      <span class="marquee-item">Personal Growth</span>
+      <span class="marquee-item">Discipline & Focus</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid reveal">
+      <div class="about-img">
+        <div class="about-img-line"></div>
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Abstract" />
+        <div class="about-img-overlay"></div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">About</span>
+        <h2 class="section-heading">The <em>Vision</em><br>& Mission</h2>
+        <p>Maher Joti represents a bridge between ambition and reality. Driven by timeless philosophy and actionable strategies, the mission is simple: to decode the psychology of success and share it with the world.</p>
+        <p>In a world of constant noise, Maher brings clarity. Through daily insights, deep dives into mindset mastery, and explorations of modern performance tactics, she aims to inspire a generation of forward-thinkers.</p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Insights Shared</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Driven Focus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section id="topics">
+    <div class="topics-header reveal">
+      <div>
+        <span class="section-label">Core Themes</span>
+        <h2 class="section-heading">Explore <em>Ideas</em><br>That Matter</h2>
+      </div>
+      <p class="section-sub">Dive deep into subjects that shape reality, drive success, and prepare us for the future.</p>
+    </div>
+    <div class="topics-grid reveal">
+      <div class="topic-card">
+        <span class="topic-num">01</span>
+        <div class="topic-icon-wrap"><i class="fas fa-brain"></i></div>
+        <h3 class="topic-title">Mindset Mastery</h3>
+        <p class="topic-desc">Rewire your brain for resilience, focus, and unstoppable growth.</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-num">02</span>
+        <div class="topic-icon-wrap"><i class="fas fa-chess-knight"></i></div>
+        <h3 class="topic-title">Success Psychology</h3>
+        <p class="topic-desc">Decode the habits and strategies of high performers.</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-num">03</span>
+        <div class="topic-icon-wrap"><i class="fas fa-bullseye"></i></div>
+        <h3 class="topic-title">Discipline & Focus</h3>
+        <p class="topic-desc">Eliminate distractions and build iron-clad daily routines.</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-num">04</span>
+        <div class="topic-icon-wrap"><i class="fas fa-book-open"></i></div>
+        <h3 class="topic-title">Life Philosophy</h3>
+        <p class="topic-desc">Timeless wisdom applied to modern challenges.</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-num">05</span>
+        <div class="topic-icon-wrap"><i class="fas fa-chart-line"></i></div>
+        <h3 class="topic-title">Wealth Thinking</h3>
+        <p class="topic-desc">Transform your relationship with value creation and abundance.</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-num">06</span>
+        <div class="topic-icon-wrap"><i class="fas fa-seedling"></i></div>
+        <h3 class="topic-title">Personal Growth</h3>
+        <p class="topic-desc">Continuous evolution and upgrading your personal habits.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact">
+    <div class="impact-top reveal">
+      <div>
+        <span class="section-label">Global Impact</span>
+        <h2 class="section-heading">Trusted by <em>Millions</em><br>Worldwide</h2>
+        <p class="section-sub">Partnered with forward-thinking brands and followed by driven individuals across the globe.</p>
+        <div class="partners-row">
+          <i class="fab fa-aws partner-icon" title="AWS"></i>
+          <i class="fab fa-google partner-icon" title="Google"></i>
+          <i class="fab fa-microsoft partner-icon" title="Microsoft"></i>
+          <i class="fab fa-apple partner-icon" title="Apple"></i>
+          <i class="fab fa-spotify partner-icon" title="Spotify"></i>
+        </div>
+      </div>
+      <div>
+        <div class="impact-number">1.5M+</div>
+        <p style="color:var(--muted);font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;margin-top:16px;">Global Audience Reach</p>
+      </div>
+    </div>
+    <div class="testimonials reveal">
+      <div class="testimonial">
+        <p class="test-quote">"Maher's insights on strategic growth completely changed how I approach my daily routines. The mindset shifts are invaluable."</p>
+        <div class="test-author">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop" alt="Sarah J." class="test-avatar" />
+          <div>
+            <div class="test-name">Sarah J.</div>
+            <div class="test-role">Startup Founder</div>
+            <div class="stars-row">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="test-quote">"The clarity and focus I've gained from following this philosophy is unmatched. A true thought leader for the modern age."</p>
+        <div class="test-author">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=150&auto=format&fit=crop" alt="David M." class="test-avatar" />
+          <div>
+            <div class="test-name">David M.</div>
+            <div class="test-role">Tech Executive</div>
+            <div class="stars-row">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section id="feed">
+    <div class="reveal">
+      <span class="section-label">Latest</span>
+      <h2 class="section-heading">Daily <em>Insights</em></h2>
+    </div>
+    <div class="feed-grid reveal">
+      <div class="post-card">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="Future" class="post-img" />
+        <div class="post-body">
+          <div class="post-tags"><span class="tag">Future</span><span class="tag">Mindset</span></div>
+          <p class="post-quote">"The future belongs to those who adapt and grow, directing their own path."</p>
+          <p class="post-note">Adaptability is the new currency. Are you ready?</p>
+          <div class="post-actions">
+            <button class="action-btn"><i class="far fa-heart"></i> 2.4k</button>
+            <button class="action-btn"><i class="far fa-comment"></i> 142</button>
+            <button class="action-btn"><i class="far fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="post-card">
+        <img src="https://images.unsplash.com/photo-1506452305024-9d3f02d1c9b5?q=80&w=800&auto=format&fit=crop" alt="Discipline" class="post-img" />
+        <div class="post-body">
+          <div class="post-tags"><span class="tag">Success</span><span class="tag">Discipline</span></div>
+          <p class="post-quote">"Motivation gets you started. Discipline keeps you going. Obsession makes you great."</p>
+          <p class="post-note">Stop relying on feeling good to do what needs to be done.</p>
+          <div class="post-actions">
+            <button class="action-btn"><i class="far fa-heart"></i> 3.1k</button>
+            <button class="action-btn"><i class="far fa-comment"></i> 218</button>
+            <button class="action-btn"><i class="far fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="post-card">
+        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800&auto=format&fit=crop" alt="Philosophy" class="post-img" />
+        <div class="post-body">
+          <div class="post-tags"><span class="tag">Philosophy</span><span class="tag">Growth</span></div>
+          <p class="post-quote">"You are building the foundation of your future self with every action you take today."</p>
+          <p class="post-note">What habits are you feeding your daily routine?</p>
+          <div class="post-actions">
+            <button class="action-btn"><i class="far fa-heart"></i> 1.8k</button>
+            <button class="action-btn"><i class="far fa-comment"></i> 89</button>
+            <button class="action-btn"><i class="far fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="load-more-wrap reveal">
+      <a href="social.html" class="btn-ghost">View More on Instagram <i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <!-- SOCIALS -->
+  <section id="socials">
+    <div class="reveal">
+      <span class="section-label">Connect</span>
+      <h2 class="section-heading">Join the <em>Community</em></h2>
+    </div>
+    <div class="social-grid reveal">
+      <div class="platform-card">
+        <i class="fab fa-instagram platform-icon ig"></i>
+        <div class="platform-header">
+          <img src="imgs/maher.jpg" alt="Maher Joti" class="platform-avatar" />
+          <div class="platform-name">@maherjoti</div>
+          <div class="platform-handle">Thought Leader · Philosophy</div>
+        </div>
+        <div class="p-stats">
+          <div><span class="p-stat-num">42.5K</span><span class="p-stat-label">Followers</span></div>
+          <div><span class="p-stat-num">312</span><span class="p-stat-label">Posts</span></div>
+          <div><span class="p-stat-num">12</span><span class="p-stat-label">Following</span></div>
+        </div>
+        <p class="platform-desc">Daily philosophy, aesthetic visuals, and insights decoding the psychology of high performers.</p>
+        <a href="#" class="btn-platform" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;">Follow on Instagram</a>
+      </div>
+      <div class="platform-card">
+        <i class="fab fa-facebook platform-icon fb"></i>
+        <div class="platform-header">
+          <img src="imgs/maher.jpg" alt="Maher Joti" class="platform-avatar" style="border-color:#1877f2;" />
+          <div class="platform-name">Maher Joti Official</div>
+          <div class="platform-handle">Public Figure · Motivation</div>
+        </div>
+        <div class="p-stats">
+          <div><span class="p-stat-num">85K</span><span class="p-stat-label">Likes</span></div>
+          <div><span class="p-stat-num">1.2M</span><span class="p-stat-label">Reach</span></div>
+          <div><span class="p-stat-num">18%</span><span class="p-stat-label">Engagement</span></div>
+        </div>
+        <p class="platform-desc">Deep dive articles, community discussions, and live streams on strategy and mindset.</p>
+        <a href="#" class="btn-platform" style="background:#1877f2;color:#fff;">Like Facebook Page</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <span class="section-label">Collab</span>
+        <h2 class="contact-info-heading">Partner with <em>Maher</em></h2>
+        <p>Open for brand partnerships, speaking engagements, and promotions. Let's build something great together.</p>
+        <div class="services-list">
+          <div class="service-item">
+            <div class="service-icon"><i class="fas fa-handshake"></i></div>
+            <span class="service-name">Brand Partnerships</span>
+          </div>
+          <div class="service-item">
+            <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+            <span class="service-name">Promotions & Shoutouts</span>
+          </div>
+          <div class="service-item">
+            <div class="service-icon"><i class="fas fa-microphone-alt"></i></div>
+            <span class="service-name">Speaking Engagements</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <div id="form-message"></div>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Company / Full Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Your name..." required />
+          </div>
+          <div class="form-group">
+            <label for="email">Business Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="inquiry">Inquiry Type</label>
+            <select id="inquiry" name="inquiry" class="form-control" required>
+              <option value="" disabled selected>Select inquiry...</option>
+              <option value="partnership">Brand Partnership</option>
+              <option value="promotion">Promotion / Shoutout</option>
+              <option value="speaking">Speaking Engagement</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Details / Proposal</label>
+            <textarea id="message" name="message" class="form-control" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span id="btnText">Submit Proposal</span>
+            <i class="fas fa-paper-plane" id="btnIcon"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">MaherJoti</div>
+    <p class="footer-copy">&copy; 2026 Maher Joti. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      const icon = toggle.querySelector('i');
+      icon.className = nav.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+    });
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.querySelector('i').className = 'fas fa-bars';
+      });
+    });
+
+    // Scroll spy
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 200) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Like buttons
+    document.querySelectorAll('.action-btn').forEach(btn => {
+      if (btn.querySelector('.fa-heart')) {
+        btn.addEventListener('click', () => {
+          const icon = btn.querySelector('i');
+          icon.classList.toggle('far');
+          icon.classList.toggle('fas');
+          icon.style.color = icon.classList.contains('fas') ? '#c9a84c' : '';
+        });
+      }
+    });
+
+    // Form
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const msg = document.getElementById('form-message');
+      const btn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const btnIcon = document.getElementById('btnIcon');
+      btn.disabled = true;
+      btnText.textContent = 'Sending...';
+      btnIcon.className = 'fas fa-spinner fa-spin';
+      setTimeout(() => {
+        msg.style.display = 'block';
+        msg.style.background = 'rgba(201,168,76,0.1)';
+        msg.style.border = '1px solid rgba(201,168,76,0.3)';
+        msg.style.color = '#c9a84c';
+        msg.style.fontSize = '0.85rem';
+        msg.textContent = '✓ Proposal submitted! We will get back to you soon.';
+        this.reset();
+        btn.disabled = false;
+        btnText.textContent = 'Submit Proposal';
+        btnIcon.className = 'fas fa-paper-plane';
+        setTimeout(() => msg.style.display = 'none', 5000);
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

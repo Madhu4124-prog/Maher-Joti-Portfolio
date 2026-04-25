@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maher Joti | Insights</title>
+  <meta name="description" content="Maher Joti - Insights page" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header id="header">
+    <a href="index.html" class="logo">Maher<span>Joti</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    <nav id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="topics.html">Topics</a>
+      <a href="content.html" class="active">Insights</a>
+      <a href="social.html">Socials</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- INSIGHTS -->
+  <section id="feed">
+    <div class="reveal">
+      <span class="section-label">Latest</span>
+      <h2 class="section-heading">Daily <em>Insights</em></h2>
+    </div>
+    <div class="feed-grid reveal">
+      <div class="post-card">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="Future" class="post-img" />
+        <div class="post-body">
+          <div class="post-tags"><span class="tag">Future</span><span class="tag">Mindset</span></div>
+          <p class="post-quote">"The future belongs to those who adapt and grow, directing their own path."</p>
+          <p class="post-note">Adaptability is the new currency. Are you ready?</p>
+          <div class="post-actions">
+            <button class="action-btn"><i class="far fa-heart"></i> 2.4k</button>
+            <button class="action-btn"><i class="far fa-comment"></i> 142</button>
+            <button class="action-btn"><i class="far fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="post-card">
+        <img src="https://images.unsplash.com/photo-1506452305024-9d3f02d1c9b5?q=80&w=800&auto=format&fit=crop" alt="Discipline" class="post-img" />
+        <div class="post-body">
+          <div class="post-tags"><span class="tag">Success</span><span class="tag">Discipline</span></div>
+          <p class="post-quote">"Motivation gets you started. Discipline keeps you going. Obsession makes you great."</p>
+          <p class="post-note">Stop relying on feeling good to do what needs to be done.</p>
+          <div class="post-actions">
+            <button class="action-btn"><i class="far fa-heart"></i> 3.1k</button>
+            <button class="action-btn"><i class="far fa-comment"></i> 218</button>
+            <button class="action-btn"><i class="far fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="post-card">
+        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800&auto=format&fit=crop" alt="Philosophy" class="post-img" />
+        <div class="post-body">
+          <div class="post-tags"><span class="tag">Philosophy</span><span class="tag">Growth</span></div>
+          <p class="post-quote">"You are building the foundation of your future self with every action you take today."</p>
+          <p class="post-note">What habits are you feeding your daily routine?</p>
+          <div class="post-actions">
+            <button class="action-btn"><i class="far fa-heart"></i> 1.8k</button>
+            <button class="action-btn"><i class="far fa-comment"></i> 89</button>
+            <button class="action-btn"><i class="far fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="load-more-wrap reveal">
+      <a href="social.html" class="btn-ghost">View More on Instagram <i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">MaherJoti</div>
+    <p class="footer-copy">&copy; 2026 Maher Joti. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (header) header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('navLinks');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+        const icon = toggle.querySelector('i');
+        icon.className = nav.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+      });
+
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          nav.classList.remove('open');
+          toggle.querySelector('i').className = 'fas fa-bars';
+        });
+      });
+    }
+
+    const reveals = document.querySelectorAll('.reveal');
+    if (reveals.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    document.querySelectorAll('.action-btn').forEach(btn => {
+      if (btn.querySelector('.fa-heart')) {
+        btn.addEventListener('click', () => {
+          const icon = btn.querySelector('i');
+          icon.classList.toggle('far');
+          icon.classList.toggle('fas');
+          icon.style.color = icon.classList.contains('fas') ? '#c9a84c' : '';
+        });
+      }
+    });
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const msg = document.getElementById('form-message');
+        const btn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        btn.disabled = true;
+        btnText.textContent = 'Sending...';
+        btnIcon.className = 'fas fa-spinner fa-spin';
+        setTimeout(() => {
+          msg.style.display = 'block';
+          msg.style.background = 'rgba(201,168,76,0.1)';
+          msg.style.border = '1px solid rgba(201,168,76,0.3)';
+          msg.style.color = '#c9a84c';
+          msg.style.fontSize = '0.85rem';
+          msg.textContent = 'Proposal submitted! We will get back to you soon.';
+          this.reset();
+          btn.disabled = false;
+          btnText.textContent = 'Submit Proposal';
+          btnIcon.className = 'fas fa-paper-plane';
+          setTimeout(() => msg.style.display = 'none', 5000);
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>
